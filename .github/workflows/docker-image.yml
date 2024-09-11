@@ -30,18 +30,12 @@ jobs:
         with:
           images: ${{ secrets.DOCKER_USERNAME }}/example_nodejs
           tags: |
-            # branch event
-            type=ref,enable=true,priority=600,prefix=,suffix=,event=branch
-            # tag event
-            type=ref,enable=true,priority=600,prefix=,suffix=,event=tag
-            # pull request event
-            type=ref,enable=true,priority=600,prefix=pr-,suffix=,event=pr
+            type=schedule,pattern={{date 'YYYYMMDD-hhmmss' tz='Asia/Kolkata'}}
       - name: Build and push
         id: push
         uses: docker/build-push-action@v6
         with:
           context: .
-          platforms: linux/amd64,linux/arm64,linux/arm/v7
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}

@@ -30,7 +30,7 @@ jobs:
         with:
           images: ${{ secrets.DOCKER_USERNAME }}/example_nodejs
           tags: |
-            type=schedule,pattern={{date 'YYYYMMDD-hhmmss' tz='Asia/Kolkata'}}
+            type=schedule,pattern={{date 'YYYYMMDD-hhmmss'}}
       - name: Build and push
         id: push
         uses: docker/build-push-action@v6

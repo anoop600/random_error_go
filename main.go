@@ -5,20 +5,9 @@ import (
 	"math/rand"
 	"os"
 	"time"
-        "os/user"
-        "log"
 )
 
 func main() {
-        currentUser, err := user.Current()
-        if err != nil {
-          log.Fatalf(err.Error())
-        }
-
-        username := currentUser.Username
-
-        fmt.Printf("Username is: %s\n", username)
-
 	// Seed the random number generator
 	rand.Seed(time.Now().UnixNano())
 
